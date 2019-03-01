@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import UserDetail from './components/UserDetail';
 
 class App extends Component {
+
+
+  state = {
+    name: 'Nitu',
+    address: 'Delhi'
+  }
+
+  nameChangeHandler = (e) => {
+    console.log(e.target.value);
+    this.setState({
+      name: e.target.value
+    })
+  }
+
+  homeChangeHandler = (e) => {
+    this.setState({
+      address: e.target.value
+    })
+  }
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <UserDetail
+         firstname={this.state.name}
+         home={this.state.address}
+         nameChangeHandler={this.nameChangeHandler}
+         homeChangeHandler={this.homeChangeHandler}
+
+        />
       </div>
     );
   }
